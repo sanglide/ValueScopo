@@ -1,0 +1,18 @@
+# PER-CHUNK PROMPT
+
+
+INPUT_JSON:
+{{INPUT_JSON}}
+
+
+Task: Evaluate whether the provided chunk introduces deviations against Schwartz-derived values (Security, Accessibility, Inclusion, Privacy, Universalism, Benevolence).
+Return a JSON following this schema exactly:
+
+
+{ "chunk_id":"...", "findings":[ {"value":"","score":0.0,"evidence":"file:line-line — short","suggested_fix":"","confidence":0.0} ], "summary":"..." }
+
+
+Rules:
+- Use only "surrounding_lines" for exact line references.
+- If no issues, return findings: [] and a short summary.
+- Return JSON only.

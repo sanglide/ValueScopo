@@ -1,0 +1,18 @@
+# AGGREGATOR PROMPT
+
+
+INPUT_JSON:
+{{INPUT_JSON}}
+
+
+Task: Aggregate the provided per-chunk findings into a final report JSON.
+Use weighted averaging (weight=confidence) for per-value scores. Provide top evidences and deduplicated suggested_fixes.
+For Security findings with score>=0.7 add reviewer_requests entries.
+
+
+Return JSON matching schema:
+{ "value_summary":{...}, "suggested_fixes":[...], "reviewer_requests":[...], "overall_confidence":0.0, "summary_text":"..." }
+
+
+Rules:
+- Return JSON only.

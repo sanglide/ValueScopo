@@ -1,0 +1,81 @@
+[
+  {
+    "chunk_id": "tensorflow/tensorflow|tensorflow/compiler/tf2xla/kernels/light_outside_compilation.cc|hunk0",
+    "file_path": "tensorflow/compiler/tf2xla/kernels/light_outside_compilation.cc",
+    "language": "cc",
+    "diff_hunk": "@@ -485,7 +485,7 @@ class TfCallbackDevice : public DeviceBase {\n         tsl::PlatformDeviceId(stream_->parent()->device_ordinal()), allocator,\n         // TODO(cheshire): Pass meaningful scratch buffer.\n         /*scratch=*/nullptr);\n-    return OkStatus();\n+    return absl::OkStatus();\n #else\n     LOG(FATAL) << \"CUDA-enabled build is required\";  // Crash OK\n #endif",
+    "surrounding_lines": [
+      {
+        "line": 477,
+        "text": "  absl::Status ReinitializeGpuDevice(OpKernelContext* context,"
+      },
+      {
+        "line": 478,
+        "text": "                                     PerOpGpuDevice* device, DeviceContext* dc,"
+      },
+      {
+        "line": 479,
+        "text": "                                     Allocator* allocator) override {"
+      },
+      {
+        "line": 480,
+        "text": "#if GOOGLE_CUDA || TENSORFLOW_USE_ROCM"
+      },
+      {
+        "line": 481,
+        "text": "    auto concrete_device = static_cast<ConcretePerOpGpuDevice*>(device);"
+      },
+      {
+        "line": 482,
+        "text": "    concrete_device->Reinitialize("
+      },
+      {
+        "line": 483,
+        "text": "        context, stream_->platform_specific_handle().stream,"
+      },
+      {
+        "line": 484,
+        "text": "        /*platform_device_id=*/"
+      },
+      {
+        "line": 485,
+        "text": "        tsl::PlatformDeviceId(stream_->parent()->device_ordinal()), allocator,"
+      },
+      {
+        "line": 486,
+        "text": "        // TODO(cheshire): Pass meaningful scratch buffer."
+      },
+      {
+        "line": 487,
+        "text": "        /*scratch=*/nullptr);"
+      },
+      {
+        "line": 488,
+        "text": "    return absl::OkStatus();"
+      },
+      {
+        "line": 489,
+        "text": "#else"
+      },
+      {
+        "line": 490,
+        "text": "    LOG(FATAL) << \"CUDA-enabled build is required\";  // Crash OK"
+      },
+      {
+        "line": 491,
+        "text": "#endif"
+      },
+      {
+        "line": 492,
+        "text": "  }"
+      },
+      {
+        "line": 493,
+        "text": ""
+      }
+    ],
+    "static_hints": [],
+    "repo": "tensorflow/tensorflow",
+    "pr_id": "unknown"
+  }
+]
