@@ -3,7 +3,7 @@
 generate_chunks.py — 支持本地仓库与远程 public 仓库（owner/repo）浅克隆并生成 chunks.json
 python generate_chunks.py --remote owner/repo --out pr_chunks.json --compare-base HEAD~1 --depth 2
 
-python ChangeSense/generate_chunks.py --remote tensorflow/tensorflow --out results/pr_chunks.json --compare-base HEAD~1 --depth 2
+python ChangeSense/generate_chunks.py --remote tensorflow/tensorflow --out results/tensorflow_tensorflow_pr_chunks.json --compare-base HEAD~1 --depth 2
 
 用法（两种）：
 1) 在 CI 中对当前仓库运行（默认行为）：
@@ -218,7 +218,7 @@ def main():
             chunks = generate_chunks_from_repo(repo_dir=cwd, base=compare_base, repo_name=None)
 
         # Write out chunks.json
-        write_chunks(chunks, out_path=out_path)
+        write_chunks(chunks, out_path=f'{out_path}')
 
     finally:
         # cleanup temp_dir if we cloned
